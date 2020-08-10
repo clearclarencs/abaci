@@ -1,0 +1,296 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700&display=swap%22");
+@keyframes traffic-field {
+    from {top:180px;}
+    to {top:200px;}
+  }
+  @keyframes prompt-field {
+    from {top:280px;}
+    to {top:300px;}
+  }
+@keyframes top-bar {
+    from {top:1%;}
+    to {top:2%;}
+}
+@keyframes help_container {
+    from {top:180px;}
+    to {top:200px;}
+}
+* {
+    margin: 0;
+    padding: 0;
+    color:rgb(228, 228, 228);
+    font-family: "Poppins", sans-serif;
+} 
+.info{
+    margin: 25px;
+    margin-top: 10px;
+    margin-bottom:0px;
+    position: static;
+    left:2%;
+    top:2%;
+    font-family: "Poppins", sans-serif;
+    background-color: rgb(20,20,20);
+    color: white;
+    padding:10px;
+    width: 450px;
+    border-radius: 20px;
+    box-shadow: 4px 4px rgb(63, 63, 63);
+    animation: top-bar 1s ease 0.1s;
+}
+body{
+    background-color:rgb(20,20,20);
+}
+.container{
+    position:absolute;
+    height:100%;
+    width:100%;
+    background-repeat: no-repeat;
+    background-size:cover;
+    transition: 0.5s;
+}
+#studentlogincontainer{
+    background-image: url(../images/backdrop1.jfif);
+    background-position: center;
+}
+#teacherlogincontainer{
+    background-image: url(../images/backdrop2.jpg);
+    background-position: center;
+}
+#signupcontainer{
+    background-image: url(../images/backdrop3.jpg);
+    background-position: center;
+}
+#logoutcontainer{
+    background-image: url(../images/backdrop4.jpg);
+    background-position: center;
+}
+#profilecontainer{
+    background-image: url(../images/backdrop5.jpg);
+    background-position: center;
+
+}
+#info-container{
+    width:100%;
+    height: 100%;
+    background-color:#FFF;
+    color: #FFF;
+}
+#help-container{
+    background-color: rgb(20,20, 20);
+    border-radius: 40px;
+    color: white;
+    width: 60%;
+    position: absolute;
+    top:200px;
+    right:20%;
+    padding: 20px;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    border-top: 0px;
+    animation: help_container 1s ease 0.1s;
+}
+.info-containers{
+    padding-top: 20px;
+    padding-bottom: 0px;
+}
+.email{
+    color: rgb(38, 155, 170);
+}
+.title{
+    text-decoration: underline;
+}
+.subtitle{
+    padding-top: 5px;
+}
+.login-field{
+    background-color: rgb(20,20, 20);
+    border-radius: 40px;
+    height: 550px;
+    width: 400px;
+    position: absolute;
+    margin-left: -200px;
+    left: 50%;
+    top:200px;
+    animation: traffic-field 1s ease 0.1s;
+    box-shadow: 7px 7px rgb(63, 63, 63);
+}
+.field-group{
+    padding:40px;
+    padding-top: 70px;
+    padding-bottom: 10px;
+    color:rgb(20,20, 20);
+}
+.field-groupimg{
+    padding:40px;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    color:rgb(20,20, 20);
+}
+#logodiv{
+    padding:0px;
+    padding-bottom: 0%;
+    padding-top:50px;
+}
+#home-field #submit-button, #home-field #student-id{
+    padding-bottom:40px;
+    padding-top:40px;
+}
+.field-group input[type=text], .field-group button,.field-group input[type="password"] ,.field-group input[type="email"],.field-group input[type="number"]{
+    width: 270px;
+    height: 80px;
+    color:white;
+    border-radius: 40px;
+    background-color: rgb(20,20,20);
+    font-size: 40px;
+    font-family: "Poppins", sans-serif;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 2px solid blue;
+    transition: 0.25s;
+    outline:none;
+}
+.field-group input[id="id_username"]{
+    border: 4px solid #FEAF00;
+    text-transform:lowercase;
+    color: white;
+}
+.field-group {
+    margin-top: 0px;
+}
+.field-group input[id="id_password1"], .field-group input[id="id_password"], .field-group input[id="id_name"], .field-group input[id="id_title"], .field-group input[id="id_class_id"]{
+    border: 4px solid #FEAF00;
+    color: white;
+}
+.field-group input[id="id_username"]:focus, .field-group input[id="id_password"]:focus, .field-group input[id="id_password1"]:focus, .field-group input[id="id_name"]:focus, .field-group input[id="id_title"]:focus, .field-group input[id="id_class_id"]:focus{
+    width: 300px;
+}
+.field-group input[id="id_username"]:not(:placeholder-shown), .field-group input[id="id_password"]:not(:placeholder-shown), .field-group input[id="id_password1"]:not(:placeholder-shown), .field-group input[id="id_name"]:not(:placeholder-shown), .field-group input[id="id_title"]:not(:placeholder-shown), .field-group input[id="id_class_id"]:not(:placeholder-shown){
+    width: 300px;
+    font-size: 25px;
+}
+.field-group input[type="email"]:not(:placeholder-shown){
+    width: 300px;
+    font-size: 15px;
+}
+.login-field button{
+    border: 4px solid #4CBB17;
+    padding: 1px;
+    cursor: pointer;
+}
+.green-button:hover{
+    background-color:#2f8d23;
+}
+.green-button:active{
+    transform: translateY(4px);
+}
+.bottombutton{
+    margin:auto;
+    font-family: "Poppins", sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgb(20,20,20);
+    color: #FFF;
+    border: 0px;
+    width: 170px;
+    height:40px;
+    text-decoration: none;
+    border-radius: 40px;
+    position: fixed;
+    box-shadow:3px 3px rgb(63, 63, 63);
+}
+.right-container a{
+    right: 2%;
+    bottom: 2%;
+}
+.left-container a{
+    left: 2%;
+    bottom: 2%;
+}
+.bottombutton:hover{
+    background-color: rgb(118, 119, 119);
+}
+.bottombutton:active{
+    transform: translateY(3px);
+}
+#logo-home{
+    width:400px;
+    height:150px;
+    text-align: center;
+}
+#infocontainer{
+    background-color: #ccc;
+    background-image:
+    linear-gradient(90deg, transparent 79px, #24b6cf 79px, #abced4 81px, transparent 81px),
+    linear-gradient(#aaa .1em, transparent .1em);
+    background-size: 100% 1.2em;
+    height: 1000px;
+    width:100%;
+    position: absolute;
+    top:0px;
+    border:0px;
+}
+.message{
+    text-align: center;
+    background-color: #E60000;
+    color: rgb(20,20,20);
+    font-size: large;
+    border-radius: 20px;
+    margin-top:0px;
+}
+.error-text{
+    color: rgb(20,20,20);
+}
+#message-success{
+    background-color: #4CBB17;
+}
+#message-info{
+    background-color: #FEAF00;
+}
+#password-div{
+    text-align: center;
+    border-radius: 0.5rem;
+    padding: 5px;
+    cursor: pointer;
+    margin-top: 25px;
+    margin-left: 5px;
+    width: 25px;
+    position: absolute;
+    transform: translate(310px, -80px);
+}
+#password-label{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+#password-view {
+    position: absolute;
+    left: -100vw;
+}
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+#red-submit{
+    border-color: #E60000;
+}
+#red-submit:hover{
+    background-color: #E60000;
+}
+#amber-submit{
+    border-color: #FEAF00;
+}
+#amber-submit:hover{
+    background-color: #FEAF00;
+}
+#green-submit:hover{
+    background-color: #4CBB17;
+}

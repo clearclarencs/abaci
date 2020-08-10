@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Abaci - Learn Smartly</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/outside.css' %}">
+    <link rel="icon" href="{% static 'images/traffic_light.png' %}">
+</head>
+<body>
+    <div class="container" id="signupcontainer">
+        {% if messages %}
+            {% for message in messages %}
+                <div class='message', id="message-{{message.tags}}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <div class='message', id="message-error">
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div>
+                            <strong class="error-text">{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div>
+                        <strong class="error-text">{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="info"> 
+            <h1>Sign up</h1>
+            <p>Create an account to get started.</p>
+        </div>
+        <form method='POST' class="login-field">
+            {% csrf_token %}
+            {{ form.subject.errors }}
+            <div class="field-group" id="username" style="text-align:center;">
+                {{ form.username }}
+                <script type="text/javascript">
+                   function forceLower(strInput) 
+                    {
+                    strInput.value=strInput.value.toLowerCase();
+                    } 
+                </script> 
+            </div>
+            <div class="field-group" id="password" style="text-align:center;">
+                {{ form.password1 }}  
+                <script type="text/javascript">
+                    function reveal()
+                    {
+                    if(document.getElementById('password-view').checked)
+                        {document.getElementById('password-div').style.backgroundColor = "#383838";
+                        document.getElementById("id_password1").type='text';}
+                    else
+                        {document.getElementById("id_password1").type='password';
+                        document.getElementById('password-div').style.backgroundColor = "transparent";}
+                    }
+                    </script> 
+                    <div id="password-div" ><label for="password-view" id="password-label">👁️</label></div>
+                    <input type="checkbox" id="password-view" onclick ="reveal()">
+            </div> 
+            <div class="field-group" id="submit-button" style="text-align:center;">
+                <button type="submit" value="Submit" class="green-button" id="register-button">Register</button>
+        </form>
+    </div>
+    <div class="right-container">
+        <a id="teacher" class="bottombutton" href="{% url 'login' %}">Login</a>
+    </div>
+    <div class="left-container">
+        <a id="home" class="bottombutton" href="{% url 'student-home' %}">Student</a>
+    </div>
+</body>
+</html>

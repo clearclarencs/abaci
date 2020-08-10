@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Abaci - Learn Smartly</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/outside.css' %}">
+    <link rel="icon" href="{% static 'images/traffic_light.png' %}">
+</head>
+<body>
+    {% if messages %}
+        {% for message in messages %}
+            <div class='message', id="message-{{message.tags}}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <div class="container" id="logoutcontainer">
+        <div class="info"> 
+            <h1>Logged Out</h1>
+            <p>You have been logged out, to log back in please navigate to the login page.</p>
+        </div>
+    </div>
+    <div class="right-container">
+        <a id="teacher" class="bottombutton" href="{% url 'register' %}">Sign up</a>
+    </div>
+    <div class="left-container">
+        <a id="Student" class="bottombutton" href="{% url 'login' %}">Login</a>
+    </div>
+</body>
+</html>
