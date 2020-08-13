@@ -25,7 +25,7 @@ SECRET_KEY = '+$ii=!0b2kp01#)%a*822x16z@f&bz8qz@mhe$e&s*jvk$#86^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['35.202.154.82']
 
 #Note from James, changed get_by_natural_key in django/contrib/auth/models.py so username is not case sensitive
 
