@@ -37,7 +37,7 @@ class UserRegisterForm(UserCreationForm):
         return user
 
 class UserUpdateForm(forms.ModelForm):
-    username = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'Email', 'type' : 'email', 'onkey' : 'return forceLower(this);'}))#store email as username as username not required
+    username = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'Email', 'type' : 'email', 'onkey' : 'return forceLower(this);','style':"border-color:#FEAF00"}))#store email as username as username not required
     class Meta:
         model=User
         fields = ['username']

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700&display=swap%22");
 @keyframes traffic-field {
-    from {top:180px;}
-    to {top:200px;}
+    from {top:160px;}
+    to {top:170px;}
   }
   @keyframes prompt-field {
     from {top:280px;}
@@ -110,7 +110,7 @@ body{
     position: absolute;
     margin-left: -200px;
     left: 50%;
-    top:200px;
+    top:170px;
     animation: traffic-field 1s ease 0.1s;
     box-shadow: 7px 7px rgb(63, 63, 63);
 }
@@ -151,7 +151,7 @@ body{
     outline:none;
 }
 .field-group input[id="id_username"]{
-    border: 4px solid #FEAF00;
+    border: 4px solid #E60000;
     text-transform:lowercase;
     color: white;
 }
