@@ -29,19 +29,27 @@
         </div>
         <form method='POST' class="login-field">
             {% csrf_token %}
-            {{ u_form.subject.errors }}
-            <div class="field-group" id="logodiv" style="text-align:center;">
-                <img src="{% static 'images/Abaci_logo.png' %}" id="logo-home">
-            </div>
+            {{ form.subject.errors }}
             <div class="field-group field-groupimg" id="username" style="text-align:center;">
-                {{ u_form.username }}
-                <script type="text/javascript">
-                    function forceLower(strInput) 
-                    {
-                    strInput.value=strInput.value.toLowerCase();
-                    } 
-                </script> 
+                {{ form.old_password }}
+                {{ form.new_password1 }}
+                {{ form.new_password2 }}
             </div>
+            <script type="text/javascript">
+                function reveal()
+                {
+                if(document.getElementById('password-view').checked)
+                    {document.getElementById('password-div').style.backgroundColor = "#383838";
+                    document.getElementById("id_old_password").type='text';
+                    document.getElementById("id_new_password1").type='text';}
+                else
+                    {document.getElementById("id_old_password").type='password';
+                    document.getElementById("id_new_password1").type='password';
+                    document.getElementById('password-div').style.backgroundColor = "transparent";}
+                }
+                </script>
+                <div id="password-div-profile" ><label for="password-view" id="password-label">👁️</label></div>
+                <input type="checkbox" id="password-view" onclick ="reveal()">
             <div class="field-group" id="submit-button" style="text-align:center;">
                 <button type="submit" value="Submit" class="green-button" id="register-button">Update</button>
         </form>

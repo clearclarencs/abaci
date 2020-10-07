@@ -213,7 +213,6 @@ a:hover{
 	column-count: 3;
 	column-gap: 15px;
     column-fill: auto;
-    height: 100%;
     width: 100%;
     text-align: center;
 }

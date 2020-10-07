@@ -1,0 +1,47 @@
+{% load static %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Abaci - Learn Smartly</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/outside.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/inside.css' %}">
+        <link rel="icon" href="{% static 'images/traffic_light.png' %}">
+    </head>
+    <body>
+    <div class="container" id="profilecontainer">
+        <nav id='nav'>
+            <a href="{% url 'teacher-portal' %}">
+                <img src="{% static 'images/Abaci_logo.png' %}" alt="Abaci" width=150 height=60></img>
+            </a>
+            <div id="nav-links">
+                <a href="{% url 'teacher-portal' %}">Portal</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
+        </nav>
+        {% if messages %}
+            {% for message in messages %}
+                <div class='message', id="message-{{message.tags}}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <div class="info"> 
+            <h1>Profile</h1>
+            <p>Use this page to edit your account details.</p>
+        </div>
+        <form method='POST' class="login-field">
+            {{ form.subject.errors }}
+            <div class="field-group field-groupimg" id="username" style="text-align:center;">
+                {{ form.old_password }}
+                {{ form.new_password1 }}
+                {{ form.new_password2 }}
+                <script type="text/javascript">
+                    function forceLower(strInput) 
+                    {
+                    strInput.value=strInput.value.toLowerCase();
+                    } 
+                </script> 
+            </div>
+            <div class="field-group" id="submit-button" style="text-align:center;">
+                <button type="submit" value="Submit" class="green-button" id="register-button">Update</button>
+        </form>
+    </body>
+    </html>

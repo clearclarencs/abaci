@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserRegisterForm, UserUpdateForm
+from .forms import UserRegisterForm, CustomPasswordUpdateForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import views as auth_views
+from django.contrib.auth import views as auth_views, update_session_auth_hash
 
 def register(request):
     if request.user.is_authenticated:#redirects logged in users
@@ -23,15 +23,18 @@ def register(request):
 @login_required
 def profile(request):
     if request.method == 'POST':
-        u_form = UserUpdateForm(request.POST, instance=request.user)
-        if u_form.is_valid():
-            u_form.save()
-            messages.success(request, f'Account updated!')
-            return redirect('profile')
+        form = CustomPasswordUpdateForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Password updated!')
+            return redirect('login')
+        else:
+            messages.error(request, 'Error')
     else:
-        u_form = UserUpdateForm(instance=request.user)
-    context = {
-        'u_form': u_form
-    }
-    return render(request, 'teachers/profile.html', context)
+        form = CustomPasswordUpdateForm(request.user)
+    return render(request, 'teachers/profile.html', {
+        'form': form
+    })
+
 

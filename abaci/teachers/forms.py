@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import password_validation
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.forms.widgets import PasswordInput, TextInput
 
 
@@ -36,8 +36,22 @@ class UserRegisterForm(UserCreationForm):
         )
         return user
 
-class UserUpdateForm(forms.ModelForm):
-    username = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'Email', 'type' : 'email', 'onkey' : 'return forceLower(this);','style':"border-color:#FEAF00"}))#store email as username as username not required
+
+class CustomPasswordUpdateForm(PasswordChangeForm):
+    old_password = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'type': 'password', 'placeholder': 'Current Password', 'style':"border-color:#FEAF00"}))#edit placeholders
+    new_password1 = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'type': 'password', 'placeholder': 'New Password', 'style':"border-color:#FEAF00"}))
+    new_password2 = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'type': 'hidden', 'value': 'BLANK', 'placeholder': 'New Password', 'style':"border-color:#FEAF00"}))
     class Meta:
         model=User
-        fields = ['username']
+        fields = ['old_password', 'new_password1']
+
+    def clean_new_password2(self):
+        new_password1 = self.cleaned_data.get('new_password1')
+        new_password2 = self.cleaned_data.get('new_password1')
+        password_validation.validate_password(new_password2, self.user)
+        return new_password2
+
+
+            
+            
+

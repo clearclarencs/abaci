@@ -10,7 +10,7 @@ from django.contrib import messages
 def home(request):
     if request.method=='POST':
         #username = email and is all lowercase
-        form = ClassLoginForm(request.POST, instance=request.user)
+        form = ClassLoginForm(request.POST)
         if form.is_valid():
             return redirect('student-vote', class_id = form.cleaned_data['class_id'])
     else:
