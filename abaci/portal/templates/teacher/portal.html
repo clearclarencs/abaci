@@ -1,4 +1,5 @@
 {% load static %}
+<!-- Portal portal page (classes) -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,20 +31,7 @@
                 <div class="class-container" onclick="location.href='{% url 'clss-detail' clss.ID %}'" style="width: 200px; height: 200px;">
                     <h1>{{ clss.name }}</h1>
                     <h2>ID: {{ clss.ID }}</h2>
-                    {% for topic in topics %}
-                        {% if topic.Clss.ID == clss.ID %}
-                            {% if topic.live == True %}
-                            {% firstof 'yes' as displayed %}
-                                <h2 style="color:#4CBB17">{{ topic.title }}</h2>
-                            {% endif %}
-                        {% endif %}
-                        {% if displayed == 'yes' %}
-
-                        {% else %}
-                            <h2 style="color:#E60000">No active topic</h2>
-                        {% endif %}
-                    {% endfor %}
-                    {{ displayed }}
+                    {{ clss.label|safe }}
                 </div>
             {% endfor %}
         </div>

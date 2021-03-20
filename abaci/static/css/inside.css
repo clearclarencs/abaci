@@ -1,3 +1,4 @@
+/* Inside css primarily for portal Image 1/4 */
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700&display=swap%22");
 * {
     margin: 0;
@@ -64,6 +65,7 @@ a:hover{
     padding:20px;
     text-align: center;
 }
+/* Inside css primarily for portal Image 2/4 */
 #delete{
     background-color: #E60000;
     width:140px;
@@ -135,6 +137,7 @@ a:hover{
     background-color: #E60000;
     text-decoration: none;
 }
+/* Inside css primarily for portal Image 3/4 */
 .class-container{
     cursor: pointer;
     display: inline-block;
@@ -203,6 +206,7 @@ a:hover{
 .class-container:hover{
     border-color: rgb(63, 63, 63);
 }
+/* Inside css primarily for portal Image 4/4 */
 #columns, #columns-portal{
     -webkit-column-count: 3;
 	-webkit-column-gap: 10px;

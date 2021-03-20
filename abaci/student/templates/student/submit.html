@@ -1,4 +1,5 @@
 {% load static %}
+<!-- Student submit response page IMAGE 1/2 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
     <link rel="icon" href="{% static 'images/traffic_light.png' %}">
 </head>
 <body>
-    <div class="container" id="signupcontainer">
+        <div class="container" id="signupcontainer">
         {% if messages %}
             {% for message in messages %}
                 <div class='message', id="message-{{message.tags}}">{{ message }}</div>
@@ -36,13 +37,94 @@
         <form method="POST" class="login-field">
             {% csrf_token %}
             <div class="form-group">
-                <div class="field-group" id="submit-button" style="text-align:center;">
-                    <button type="submit" id="red-submit" name="red">Unsure</button>
+                <style>
+                    /* Popup container - can be anything you want */
+                    .popup {
+                      position: relative;
+                      display: inline-block;
+                      cursor: pointer;
+                      -webkit-user-select: none;
+                      -moz-user-select: none;
+                      -ms-user-select: none;
+                      user-select: none;
+                    }
+                    
+                    /* The actual popup */
+                    .popup .popuptext {
+                      outline: none;
+                      visibility: hidden;
+                      background-color: #000000;
+                      color: #fff;
+                      text-align: center;
+                      border-radius: 40px;
+                      position: absolute;
+                      top: 76px;
+                      left: 50%;
+                      width: 270px;
+                      height: 80px;
+                      left: -135px;
+                      border-width: 4px;
+                      font-size: 40px;
+                    }
+                    /* Student submit response page IMAGE 2/2 */
+                    /* Toggle this class - hide and show the popup */
+                    .popup .show {
+                      visibility: visible;
+                    }
+
+                    .unshow {
+                      visibility: hidden;
+                    }
+
+                    #var-submit{
+                        font-family: "Poppins", sans-serif;
+                        top: 237px;
+                    }
+
+                    #var-submit:hover{
+                        border-width: 6px;
+                    }
+
+                    #myPopup:not(:placeholder-shown){
+                        font-size: 15px;
+                    }
+
+                    </style>
+                    </head>
+                    <body style="text-align:center">
+                    
+                    <div class="popup">
+                      <input type="text" class="popuptext" id="myPopup" name="comment" placeholder="Comment?"maxlength="280" >
+                      <button class="popuptext" type="submit"  id="var-submit">Submit</button>
+                    </div>
+                    <script>
+                    // When the user clicks on div, open the popup
+                    function showPopup(color) {
+                    var grn = document.getElementById("green-button");
+                      grn.classList.add("unshow");
+                      var popup = document.getElementById("myPopup");
+                      popup.classList.add("show");
+                      var popupbut = document.getElementById("var-submit");
+                      popupbut.setAttribute('name', color);
+                      if (color == 'amber'){
+                        popupbut.setAttribute('style', 'border-color:#FEAF00');
+                        popup.setAttribute('style', 'border-color:#FEAF00');
+                      }
+                      if (color == 'red'){
+                        popupbut.setAttribute('style', 'border-color:#E60000');
+                        popup.setAttribute('style', 'border-color:#E60000');
+                      }
+                      popupbut.setAttribute('name', color);
+                      popupbut.classList.add("show");
+                    }
+                    </script>
+                <div class="field-group" id="red-button" style="text-align:center;" onclick="showPopup('red')">
+                    <button type="button" id="red-submit" name="red">Unsure</button>
                 </div>
-                <div class="field-group" id="submit-button" style="text-align:center;">
-                    <button type="submit"  id="amber-submit" name="amber">Okay</button>
+                <div class="field-group" id="amber-button" style="text-align:center;" onclick="showPopup('amber')">
+                    <button type="button"  id="amber-submit" name="amber">Okay</button>
                 </div>
-                <div class="field-group" id="submit-button" style="text-align:center;">
+                <div class="field-group green" id="green-button" style="text-align:center;">
                     <button type="submit"  id="green-submit" name="green">Confident</button>
                 </div>
             </div>

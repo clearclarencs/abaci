@@ -13,9 +13,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import json
 
-with open('/etc/config.json') as r:
-   config = json.load(r)
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,12 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config['SECRET_KEY']
+SECRET_KEY = "+$ii=!0b2kp01#)%a*822x16z@f&bz8qz@mhe$e&s*jvk$#86^"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['35.209.200.208','abaci.jskipworth.com']
+ALLOWED_HOSTS = ['35.209.200.208','abaci.jskipworth.com','127.0.0.1'] #Added ip and domain of actual site
 
 #Note from James, changed get_by_natural_key in django/contrib/auth/models.py so username is not case sensitive
 
@@ -38,7 +35,7 @@ ALLOWED_HOSTS = ['35.209.200.208','abaci.jskipworth.com']
 INSTALLED_APPS = [
     'portal.apps.PortalConfig',
     'student.apps.StudentConfig',
-    'teachers.apps.TeachersConfig',
+    'teachers.apps.TeachersConfig',#added apps config file
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -129,14 +126,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/' # url link to static files
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')#directory for images etc
-MEDIA_URL = '/media/'#url fot that directory ^
+MEDIA_URL = '/media/'#url for that directory ^
 
-LOGIN_REDIRECT_URL = 'teacher-portal'
-LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'teacher-portal' # Rediect logged in users to the teacher portal as dont need to re-login
+LOGIN_URL = 'login' # Url for the login page for unlogged in users to get redirected to
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "static"), # directory of static files like css and images
 ]

@@ -18,14 +18,19 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from teachers import views as teacher_views
 from teachers.forms import CustomAuthForm
-
+'''ABACI MAIN, urls to define url's''' # USING THESE VARIABLES TO SHOW FILE COMMENTS/SUMMARY
 urlpatterns = [
-    path('abaciadmin/', admin.site.urls),
-    path('portal/', include('portal.urls'), name='teacher-portal'),
-    path('profile/', teacher_views.profile, name='profile'),
-    path('register/', teacher_views.register, name='register'),
-    path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True, authentication_form=CustomAuthForm, template_name='teachers/login.html'), name='login'),
+    path('abaciadmin/', admin.site.urls), # Admin site for data management
+    path('portal/', include('portal.urls'), name='teacher-portal'), # Teacher portal section
+    path('profile/', teacher_views.profile, name='profile'), # Teacher profile section
+    path('register/', teacher_views.register, name='register'), # Teacher register page
+    path('login/', auth_views.LoginView.as_view(
+        redirect_authenticated_user=True, 
+        authentication_form=CustomAuthForm,
+        template_name='teachers/login.html'
+        ), # Login section defiened here instead of teacher section
+        name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='teachers/logout.html'), name='logout'),
-    path('', include('student.urls')),
+    path('', include('student.urls')), # Redirect student section to student app
 
 ]

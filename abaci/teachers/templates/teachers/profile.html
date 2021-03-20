@@ -1,57 +1,59 @@
 {% load static %}
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Abaci - Learn Smartly</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/outside.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/inside.css' %}">
-        <link rel="icon" href="{% static 'images/traffic_light.png' %}">
-    </head>
-    <body>
-    <div class="container" id="profilecontainer">
-        <nav id='nav'>
-            <a href="{% url 'teacher-portal' %}">
-                <img src="{% static 'images/Abaci_logo.png' %}" alt="Abaci" width=150 height=60></img>
-            </a>
-            <div id="nav-links">
-                <a href="{% url 'teacher-portal' %}">Portal</a>
-                <a href="{% url 'logout' %}">Logout</a>
-            </div>
-        </nav>
-        {% if messages %}
-            {% for message in messages %}
-                <div class='message', id="message-{{message.tags}}">{{ message }}</div>
+<!-- Teacher profile page (change password) -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Abaci - Learn Smartly</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/outside.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/inside.css' %}">
+    <link rel="icon" href="{% static 'images/traffic_light.png' %}">
+</head>
+<body>
+<div class="container" id="profilecontainer">
+    <nav id='nav'>
+        <a href="{% url 'teacher-portal' %}">
+            <img src="{% static 'images/Abaci_logo.png' %}" alt="Abaci" width=150 height=60></img>
+        </a>
+        <div id="nav-links">
+            <a href="{% url 'teacher-portal' %}">Portal</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </nav>
+    {% if messages %}
+        {% for message in messages %}
+            <div class='message', id="message-{{message.tags}}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <div class='message', id="message-error">
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div>
+                        <strong class="error-text">{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div>
+                    <strong class="error-text">{{ error|escape }}</strong>
+                </div>
             {% endfor %}
         {% endif %}
-        <div class="info"> 
-            <h1>Profile</h1>
-            <p>Use this page to edit your account details.</p>
+    </div>
+    <div class="info"> 
+        <h1>Profile</h1>
+        <p>Use this page to edit your account details.</p>
+    </div>
+    <form method='POST' class="login-field">
+        {% csrf_token %}
+        {{ form.subject.errors }}
+        <div class="field-group field-groupimg" id="username" style="text-align:center;">
+            {{ form.old_password }}
+            {{ form.new_password1 }}
+            {{ form.new_password2 }}
         </div>
-        <form method='POST' class="login-field">
-            {% csrf_token %}
-            {{ form.subject.errors }}
-            <div class="field-group field-groupimg" id="username" style="text-align:center;">
-                {{ form.old_password }}
-                {{ form.new_password1 }}
-                {{ form.new_password2 }}
-            </div>
-            <script type="text/javascript">
-                function reveal()
-                {
-                if(document.getElementById('password-view').checked)
-                    {document.getElementById('password-div').style.backgroundColor = "#383838";
-                    document.getElementById("id_old_password").type='text';
-                    document.getElementById("id_new_password1").type='text';}
-                else
-                    {document.getElementById("id_old_password").type='password';
-                    document.getElementById("id_new_password1").type='password';
-                    document.getElementById('password-div').style.backgroundColor = "transparent";}
-                }
-                </script>
-                <div id="password-div-profile" ><label for="password-view" id="password-label">👁️</label></div>
-                <input type="checkbox" id="password-view" onclick ="reveal()">
-            <div class="field-group" id="submit-button" style="text-align:center;">
-                <button type="submit" value="Submit" class="green-button" id="register-button">Update</button>
-        </form>
-    </body>
-    </html>
+        <div class="field-group" id="submit-button" style="text-align:center;">
+            <button type="submit" value="Submit" class="green-button" id="register-button">Update</button>
+    </form>
+</body>
+</html>

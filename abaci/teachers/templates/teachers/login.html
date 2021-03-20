@@ -1,4 +1,5 @@
 {% load static %}
+<!--Teacher Login Page-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +13,26 @@
             <div class='message', id="message-{{message.tags}}">{{ message }}</div>
         {% endfor %}
     {% endif %}
+    <div class='message', id="message-error">
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div>
+                        <strong class="error-text">{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div>
+                    <strong class="error-text">{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
     <div class="container" id="teacherlogincontainer">
         <div class="info"> 
             <h1>Teacher Login</h1>
-            <p>Login page, please enter Teacher email and your password to manage your class or sign up to create classes.</p>
+            <p>Login page, please enter teacher email and your password to manage your class or sign up to create classes.</p>
         </div>
         <form method='POST' class="login-field">
             {% csrf_token %}
