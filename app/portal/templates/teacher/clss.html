@@ -1,0 +1,73 @@
+{% load static %}
+<!-- Teacher single class page (topics) -->
+<!DOCTYPE html>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<html>
+<head>
+    <title>Abaci - Teacher Portal</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/inside.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/outside.css' %}">
+    <link rel="icon" href="{% static 'images/traffic_light.png' %}">
+</head>
+<body>
+    <div class="complete-container" id="infocontainer">
+        <nav id='nav'>
+            <a href="{% url 'teacher-portal' %}">
+                <img src="{% static 'images/Abaci_logo.png' %}" alt="Abaci" width=150 height=60></img>
+            </a>
+            <div id="nav-links">
+                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
+        </nav>
+        {% if messages %}
+            {% for message in messages %}
+                <div class='message', id="message-{{message.tags}}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <a id="actionbad" href="{% url 'clss-delete' object.ID %}">❌</a>
+        <a id="actiongood" href="{% url 'topic-create' object.ID %}">➕</a>
+        <h1 class="h1lonetitle">Class: {{ clss.name }}</h1>
+        <h1 class="h1lonetitle">ID: {{ clss.ID }}</h1>
+        <div id="columns">
+            {% for topic in topics %}
+                {% if topic.total == 0 %}
+                    <div class="class-container" onclick="location.href='{% url 'topic-activate' topic.pk %}'" id="piechart{{ topic.pk }}" style="width: 300px; height: 300px;">
+                        <h2 {% if topic.live %}style="color:#4CBB17"{% endif %}>{{ topic.title }}</h2><b>No responses submitted</b>
+                    </div>
+                {% else %}
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+                
+                        function drawChart() {
+                
+                        var data = google.visualization.arrayToDataTable([
+                            ['Task', 'Hours per Day'],
+                            ['',    {{ topic.green }} ],
+                            ['',      {{ topic.amber }}],
+                            ['',  {{ topic.red }}]
+                        ]);
+                
+                        var options = {
+                            title:'{{ topic.title }}',
+                            titleTextStyle:{color: {% if topic.live %}"#4CBB17",{% else %}"white",{% endif %}fontName: 'Poppins', fontSize: 20},
+                            colors:['#4CBB17','#FEAF00','#E60000'],
+                            legend:'none',
+                            pieSliceText:'value',
+                            backgroundColor:'#141414',
+                        };
+                
+                        var chart = new google.visualization.PieChart(document.getElementById('piechart{{ topic.pk }}'));
+                
+                        chart.draw(data, options);
+                        }
+                    </script>
+                    <div class="class-container" onclick="location.href='{% url 'topic-activate' topic.pk %}'" id="piechart{{ topic.pk }}" style="width: 300px; height: 300px;"></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+

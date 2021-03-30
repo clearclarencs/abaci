@@ -1,0 +1,75 @@
+{% load static %}
+<!-- Portal topic update page (activate + view comments) -->
+<!DOCTYPE html>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<html>
+<head>
+    <title>Abaci - Teacher Portal</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/inside.css' %}">
+    <link rel="icon" href="{% static 'images/traffic_light.png' %}">
+</head>
+<body>
+    <nav id='nav'>
+        <a href="{% url 'teacher-portal' %}">
+            <img src="{% static 'images/Abaci_logo.png' %}" alt="Abaci" width=150 height=60></img>
+        </a>
+        <div id="nav-links">
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </nav>
+    {% if messages %}
+        {% for message in messages %}
+            <div class='message', id="message-{{message.tags}}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <a id="actionbad" href="{% url 'topic-delete' object.pk %}">❌</a>
+    <h1 class="h1lonetitle">Class: {{ topic.title }}</h1>
+    <h1 class="h1lonetitle" {% if topic.live %}style="color:#4CBB17"{% else %}style="color:#E60000"{% endif %}>
+        {% if topic.live %}Activated{% else %}Deactivated{% endif %}
+    </h1>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['',    {{ topic.green }} ],
+            ['',      {{ topic.amber }}],
+            ['',  {{ topic.red }}]
+        ]);
+
+        var options = {
+            title:'{{ topic.title }}',
+            titleTextStyle:{color: {% if topic.live %}"#4CBB17",{% else %}"white",{% endif %}fontName: 'Poppins', fontSize: 20},
+            colors:['#4CBB17','#FEAF00','#E60000'],
+            legend:'none',
+            pieSliceText:'value',
+            backgroundColor:'#141414',
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart{{ topic.pk }}'));
+
+        chart.draw(data, options);
+        }
+    </script>
+    <div class="class-container-big" style="left:70%;">
+        <div  id="piechart{{ topic.pk }}" style="width: 400px; height: 400px;"></div>
+        <form method='POST' class="login-field">
+            {% csrf_token %}
+            {{ form.subject.errors }}
+            <div class="field-group" id="submit-button" style="text-align:center;">
+                <button type="submit" value="Submit" class="green-button" id="green-button">Activate</button>
+            </div>
+        </form>
+    </div>
+    <div style="width:40%;background-color:rgb(20,20, 20);position:absolute;left:20px;border-radius: 10px;padding:10px;">
+        <h1 style="text-decoration: underline;">Comments</h1>
+        {% for comment in comments %}
+            <h2 style="color:white;width:90%;">- {{ comment }}</h2>
+        {% endfor %}
+    </div>
+</body>
+</html>

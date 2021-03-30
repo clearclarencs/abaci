@@ -1,0 +1,61 @@
+{% load static %}
+<!-- Portal topic create page -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Abaci - Learn Smartly</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/outside.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/inside.css' %}">
+    <link rel="icon" href="{% static 'images/traffic_light.png' %}">
+</head>
+<body>
+    <div class="container" id="signupcontainer">
+        <nav id='nav'>
+            <a href="{% url 'teacher-portal' %}">
+                <img src="{% static 'images/Abaci_logo.png' %}" alt="Abaci" width=150 height=60></img>
+            </a>
+            <div id="nav-links">
+                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
+        </nav>
+        {% if messages %}
+            {% for message in messages %}
+                <div class='message', id="message-{{message.tags}}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <div class='message', id="message-error">
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div>
+                            <strong class="error-text">{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div>
+                        <strong class="error-text">{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="info"> 
+            <h1>Create a topic</h1>
+            <p>Create a topic so students can submit responses.</p>
+        </div>
+        <form method='POST' class="login-field">
+            {% csrf_token %}
+            {{ form.subject.errors }}
+            <div class="field-group" id="logodiv" style="text-align:center;">
+                <img src="{% static 'images/Abaci_logo.png' %}" id="logo-home">
+            </div>
+            <div class="field-groupimg field-group" id="username" style="text-align:center;">
+                {{ form.title}}
+            </div>
+            <div class="field-group" id="submit-button" style="text-align:center;">
+                <button type="submit" value="Submit" class="green-button" id="register-button">Create</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,255 @@
+/* Inside css primarily for portal Image 1/4 */
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700&display=swap%22");
+* {
+    margin: 0;
+    padding: 0;
+    color:rgb(228, 228, 228);
+    font-family: "Poppins", sans-serif;
+} 
+.h1lonetitle{
+    color: rgb(20, 20, 20);
+    margin-left: 20px;
+}
+#h1portal{
+    margin-top: 15px;
+}
+#nav{
+    background-color: rgb(20, 20, 20);
+    border-color: green;
+    border-bottom: 5px;
+    border-width: 5px;
+    border-radius: 0.5px;
+}
+
+#nav-links{
+    float: right;
+    height: inherit;
+    margin:none;
+    padding: 17px 0px;
+    width: 50%;
+    text-align: right;
+}
+a{
+    text-decoration: none;
+    font-size: 20px;
+    padding-right: 5%;
+}
+a:hover{
+    text-decoration: underline;
+    font-size: 20px;
+    padding-right: 5%;
+}
+#info-container{
+    background-color: rgb(20,20, 20);
+    border-radius: 40px;
+    height: 550px;
+    width: 400px;
+    position: absolute;
+    margin-left: -200px;
+    left: 50%;
+    top:200px;
+    animation: traffic-field 1s ease 0.1s;
+    box-shadow: 7px 7px rgb(63, 63, 63);
+}
+.prompt-box{
+    background-color: rgb(20,20, 20);
+    border-radius: 40px;
+    height: 200px;
+    width: 400px;
+    position: absolute;
+    margin-left: -200px;
+    left: 50%;
+    top:300px;
+    animation: prompt-field 1s ease 0.1s;
+    box-shadow: 7px 7px rgb(63, 63, 63);
+    padding:20px;
+    text-align: center;
+}
+/* Inside css primarily for portal Image 2/4 */
+#delete{
+    background-color: #E60000;
+    width:140px;
+    height: 70px;
+    border:0px;
+    border-radius: 5px;
+    margin: 20px;
+    margin-top: 50px;
+    cursor: pointer;
+    font-size: large;
+}
+#cancel{
+    background-color: #4CBB17;
+    border-radius: 5px;
+    margin: 22px 22px;
+    margin-top: 10px;
+    padding: 21px 35px;
+}
+#delete:hover{
+    text-decoration: underline;
+}
+#actiongood{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    background-color: rgb(20, 20, 20);
+    border-radius: 5px;
+    float: right;
+    margin: 5%;
+    margin-right:10px;
+    margin-top: 19px;
+    margin-bottom:10px;
+    padding: 10px;
+    border-color: rgb(20, 20, 20);
+    border-style: solid;
+    border-width: medium;
+    text-decoration: none;
+}
+#actionbad{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    background-color: rgb(20, 20, 20);
+    border-radius: 5px;
+    float: right;
+    margin: 5%;
+    margin-left:0px;
+    margin-top: 19px;
+    margin-bottom:10px;
+    padding: 10px;
+    border-color: rgb(20, 20, 20);
+    border-style: solid;
+    border-width: medium;
+    text-decoration: none;
+}
+#actiongood:hover{
+    background-color: #4CBB17;
+    text-decoration: none;
+}
+#actionbad:hover{
+    background-color: #E60000;
+    text-decoration: none;
+}
+/* Inside css primarily for portal Image 3/4 */
+.class-container{
+    cursor: pointer;
+    display: inline-block;
+    background-color: rgb(20, 20, 20);
+	border: 10px solid #141414;
+	box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+	margin: 0 2px 15px;
+	-webkit-column-break-inside: avoid;
+	-moz-column-break-inside: avoid;
+	column-break-inside: avoid;
+	padding: 15px;
+	padding-bottom: 5px;
+    opacity: 1;
+    border-radius: 10px;
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-o-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.class-container-big{
+    display: inline-block;
+    background-color: rgb(20, 20, 20);
+	border: 10px solid #141414;
+	box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+	margin: 0 2px 15px;
+	-webkit-column-break-inside: avoid;
+	-moz-column-break-inside: avoid;
+	column-break-inside: avoid;
+	padding: 15px;
+	padding-bottom: 5px;
+    opacity: 1;
+    border-radius: 10px;
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-o-transition: all .2s ease;
+    transition: all .2s ease;
+    height: 550px;
+    width: 400px;
+    left: 50%;
+    margin: 0 auto;
+    position: absolute;
+    position: absolute;
+    margin-left: -220px;
+}
+.green-button{
+    border: 4px solid #4CBB17;
+    padding: 0px;
+    cursor: pointer;
+    width: 270px;
+    height: 80px;
+    border-radius: 40px;
+    background-color: rgb(20,20,20);
+    font-size: 40px;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+    transition: 0.25s;
+    outline:none;
+}
+.green-button:hover{
+    background-color:#2f8d23;
+}
+.green-button:active{
+    transform: translateY(4px);
+}
+.class-container:hover{
+    border-color: rgb(63, 63, 63);
+}
+/* Inside css primarily for portal Image 4/4 */
+#columns, #columns-portal{
+    -webkit-column-count: 3;
+	-webkit-column-gap: 10px;
+	-webkit-column-fill: auto;
+	-moz-column-count: 3;
+	-moz-column-gap: 10px;
+	-moz-column-fill: auto;
+	column-count: 3;
+	column-gap: 15px;
+    column-fill: auto;
+    width: 100%;
+    text-align: center;
+}
+@media (min-width: 500px) {
+	#columns {
+		-webkit-column-count: 1;
+		-moz-column-count: 1;
+		column-count: 1;
+    }
+    #columns-portal {
+		-webkit-column-count: 1;
+		-moz-column-count: 1;
+		column-count: 1;
+	}
+}
+@media (min-width: 700px) {
+	#columns {
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		column-count: 2;
+	}
+}
+@media (min-width: 1100px) {
+	#columns {
+		-webkit-column-count: 3;
+		-moz-column-count: 3;
+		column-count: 3;
+	}
+}
+@media (min-width: 1600px) {
+	#columns {
+		-webkit-column-count: 4;
+		-moz-column-count: 4;
+		column-count: 4;
+	}
+}
