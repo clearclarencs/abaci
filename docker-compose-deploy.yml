@@ -7,7 +7,7 @@ services:
     volumes:
       - static_data:/vol/web
     environment:
-      - SECRET_KEY=+$ii=!0b2kp01#)%a*822x16z@f&bz8qz@mhe$e&s*jvk$#86^
+      - SECRET_KEY="+$$ii=!0b2kp01#)%a*822x16z@f&bz8qz@mhe$e&s*jvk$$#86^"
       - ALLOWED_HOSTS=127.0.0.1,abaci.jskipworth.com
 
   proxy:
