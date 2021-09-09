@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get("secret_key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get("debug"))
-ALLOWED_HOSTS = ["abaci.herokuapp.com"] #Added ip and domain of actual site
+ALLOWED_HOSTS = ["abaci.herokuapp.com", "abaci.jskipworth.com"] #Added ip and domain of actual site
 ALLOWED_HOSTS_ENV = os.environ.get('ALLOWED_HOSTS')
 if ALLOWED_HOSTS_ENV:
     ALLOWED_HOSTS.extend(ALLOWED_HOSTS_ENV.split(","))
