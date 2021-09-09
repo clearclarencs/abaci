@@ -135,8 +135,3 @@ MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = 'teacher-portal' # Rediect logged in users to the teacher portal as dont need to re-login
 LOGIN_URL = 'login' # Url for the login page for unlogged in users to get redirected to
-
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "staticfiles"), # directory of static files like css and images
-]
