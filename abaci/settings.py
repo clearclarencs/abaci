@@ -138,5 +138,5 @@ LOGIN_URL = 'login' # Url for the login page for unlogged in users to get redire
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"), # directory of static files like css and images
+    os.path.join(BASE_DIR, "staticfiles"), # directory of static files like css and images
 ]
