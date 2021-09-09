@@ -130,8 +130,8 @@ USE_TZ = True
 STATIC_URL = '/static/static/' # url link to static files
 MEDIA_URL = '/static/media/'#url for that directory ^
 
-STATIC_ROOT = "/ vol/web/static"
-MEDIA_ROOT =  "/vol/web/media"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = 'teacher-portal' # Rediect logged in users to the teacher portal as dont need to re-login
 LOGIN_URL = 'login' # Url for the login page for unlogged in users to get redirected to
