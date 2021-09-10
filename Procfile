@@ -1,1 +1,1 @@
-web: gunicorn collectstatic abaci.wsgi
+web: gunicorn abaci.wsgi
