@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get("secret_key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get("debug"))
-ALLOWED_HOSTS = ["abaci.herokuapp.com", "abaci.jskipworth.com"] #Added ip and domain of actual site
+ALLOWED_HOSTS = ["abaci.herokuapp.com", "abaci.jskipworth.com", "127.0.0.1"] #Added ip and domain of actual site
 ALLOWED_HOSTS_ENV = os.environ.get('ALLOWED_HOSTS')
 if ALLOWED_HOSTS_ENV:
     ALLOWED_HOSTS.extend(ALLOWED_HOSTS_ENV.split(","))
@@ -135,3 +135,7 @@ MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = 'teacher-portal' # Rediect logged in users to the teacher portal as dont need to re-login
 LOGIN_URL = 'login' # Url for the login page for unlogged in users to get redirected to
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "staticfiles"), # directory of static files like css and images
+]
